@@ -1,0 +1,33 @@
+$ git config --global user.name "Your Name"
+$ git config --global user.email "email@example.com"
+
+先为每个机器自报家门：表示你这台机器上所有的Git仓库都会使用这个配置
+1.	创建版本库：repository
+创建一个空目录：mkdir xxx  --->  cd xxx
+通过git init将目录变成git可以管理的仓库：git init   
+2.	把文件添加到版本库：版本控制系统只能跟踪文本文件的改动
+先在（子）目录下编写一个文件--- >用 git add把文件添加到仓库的暂存区--- >用git commit把暂存区的所有内容提交到当前分支：-m “本次提交的说明”  (可一次性添加，提交多个文件)
+
+工作区：电脑能看到的目录，其中有一个.git的隐藏目录就是版本库，版本库里的stage称为暂存区
+
+git add: 添加文件到暂存区。
+git commit: 将暂存区文件提交到本地仓库。
+git status:掌握仓库暂存区当前的状态，即有哪些文件做了修改还未提交
+git diff    #是工作区(work dict)和暂存区(stage)的比较
+git diff --cached    #是暂存区(stage)和分支(master)的比较
+git diff HEAD -xxx #查看工作区和版本库里面最新版本的区别
+git log:从最近到最远的日志提交记录，查看提交历史，以便确定要回退到哪个版本
+git reflog：查看命令日志（历史），以便回到未来的哪个版本
+git reset –hard HEAD~xx：回退到某个xx版本，用HEAD表示当前版本，HEAD^上一版本，HEAD^^上上版本，HEAD~100：上100个版本
+git reset –hard xxx ：xxx是commit id可以回到指定的某个版本，xxx可以只写前几位
+git checkout -- file :把文件file在工作区的修改全部撤销，丢弃工作区的修改
+git reset HEAD file :把暂存区的修改撤销掉，重新放回到工作区，再用上面的命令丢弃工作区的修改
+git stash:把当前未完成的工作存储起来，等以后恢复现场后继续工作
+git stash list :查看工作现场保存的位置
+git stash pop:恢复回到工作现场的同时把stash内容删了
+git remote –v:查看远程库的信息
+git checkout –b branch-name origin/branch-name ：在本地建立与远程对应的分支
+git branch --set-upstream branch-name origin/branch-name ：建立本地分支和远程分支的关联
+git log –pretty=oneline –abbrev-commit ：查看提交日志
+删除暂存区文件：git rm file + git commit –m “xxxx”
+
