@@ -1,4 +1,4 @@
-$ git config --global user.name "Your Name"
+﻿$ git config --global user.name "Your Name"
 $ git config --global user.email "email@example.com"
 
 先为每个机器自报家门：表示你这台机器上所有的Git仓库都会使用这个配置
@@ -30,4 +30,8 @@ git checkout –b branch-name origin/branch-name ：在本地建立与远程对�
 git branch --set-upstream branch-name origin/branch-name ：建立本地分支和远程分支的关联
 git log –pretty=oneline –abbrev-commit ：查看提交日志
 删除暂存区文件：git rm file + git commit –m “xxxx”
-
+git remote add <shortname> <url> ：添加一个新的远程git仓库，<shortname>代替整个URL
+git remote rm <shortname>:删除本地仓库与<shortname>（远程库的名字）的关联
+git remote -v:显示关联的所有远程仓库
+git fetch <shortname>:会访问远程仓库，从中拉取所有你还没有的数据
+git remote rename a b:去修改一个远程仓库的简写名a为b
